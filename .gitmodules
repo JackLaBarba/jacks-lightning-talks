@@ -1,0 +1,3 @@
+[submodule "vendor/leaflet-gpx"]
+	path = vendor/leaflet-gpx
+	url = git@github.com:mpetazzoni/leaflet-gpx.git
