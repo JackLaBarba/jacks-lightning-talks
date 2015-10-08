@@ -16,9 +16,14 @@ module.exports = function(defaults) {
   app.import(vendorDir + 'leaflet-gpx/gpx.js');
 
   // Serve our GPX file
-  var extraAssets = new Funnel('data/', {
+  var dataAssets = new Funnel('data/', {
     destDir: '/data/'
   });
 
-  return app.toTree(extraAssets);
+  // Serve the stupid pin images for the GPX file
+  var gpxAssets = new Funnel(vendorDir + 'leaflet-gpx', {
+    destDir: '/images/'
+  });
+
+  return app.toTree([dataAssets, gpxAssets]);
 };

@@ -21,7 +21,14 @@ export default Ember.Component.extend({
 
   loadGPX(map) {
     var gpx = '/data/jack_and_patty_trip.gpx'; // URL to your GPX file or the GPX itself
-    new L.GPX(gpx, {async: true}).on('loaded', function(e) {
+    new L.GPX(gpx, {
+      async: true,
+      marker_options: {
+        startIconUrl: 'images/pin-icon-start.png',
+        endIconUrl: 'images/pin-icon-end.png',
+        shadowUrl: 'images/pin-shadow.png'
+      }
+    }).on('loaded', function(e) {
       map.fitBounds(e.target.getBounds());
     }).addTo(map);
     return map;
