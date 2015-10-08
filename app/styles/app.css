@@ -22,3 +22,7 @@ button {
   width: 140px;
   font-size: 40px;
 }
+
+#map {
+  height: 300px;
+}
