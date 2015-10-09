@@ -1,0 +1,16 @@
+<h3>Ember tipz (stuff we should have been doing all along)</h3>
+
+<h4>Don't put long async stuff in route transitions (hehe)</h4>
+<p>lazy > eager</p>
+
+{{#code-box language="javascript"}}
+let somethingRoute = Ember.Route.extend({
+  model() {
+    return promiseRequiredForInitialRendering();
+  },
+  afterModel(model) {
+    nowDoSomeOtherStuffOnTheSide(model);
+    return true; // not a promise so it won't block the transition
+  }
+});
+{{/code-box}}
