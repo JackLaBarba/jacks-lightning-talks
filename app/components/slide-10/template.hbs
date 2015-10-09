@@ -1,0 +1,28 @@
+<h3>Ember tipz (stuff we should have been doing all along)</h3>
+
+<h4>Try to fit long async stuff in route transitions</h4>
+<p>Because then you get a lot of loading and error handling for cheap</p>
+{{#code-box language="javascript"}}
+let FooSlowModelRoute = Ember.Route.extend({
+  model() {
+    return somePromiseThatTakesAWhileToResolve();
+  },
+});
+
+let flakyModelRoute = Ember.Route.extend({
+  model() {
+    return somePromiseThatMightReject();
+  },
+});
+
+let ApplicationRoute = Ember.Route.extend({
+  actions: {
+    loading(transition, originRoute) {
+      showASpinnerOrSomething()
+    },
+    error(reason) {
+      showAnErrorMessage(reason);
+    }
+  }
+});
+{{/code-box}}
