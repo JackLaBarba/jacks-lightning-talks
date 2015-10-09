@@ -1,0 +1,16 @@
+<h3>Ember tipz (stuff we should have been doing all along)</h3>
+
+<h4>Actually handle promise failures!</h4>
+
+{{#code-box language="javascript"}}
+flakyModel.save().then(
+  function(model) {
+    horrayThingsWorked(model);
+  },
+  function(error) {
+    displayThatErrorSomewhere(error)
+    //maybe even clean up after the error
+    flakyModel.rollback();
+  }
+)
+{{/code-box}}
