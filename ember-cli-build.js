@@ -15,6 +15,10 @@ module.exports = function(defaults) {
   app.import(bowerDir + 'leaflet/dist/leaflet.css');
   app.import(vendorDir + 'leaflet-gpx/gpx.js');
 
+  //highlight
+  app.import(bowerDir + 'highlightjs/highlight.pack.js');
+  app.import(bowerDir + 'highlightjs/styles/solarized_light.css');
+
   // Serve our GPX file
   var dataAssets = new Funnel('data/', {
     destDir: '/data/'
